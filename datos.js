@@ -13,54 +13,83 @@
 
 const GRADUADOS = [
   {
-    nombre: "Emily Marie Madrid Mata",
-    foto_inicio: "fotos/emily-inicio.jpg",
-    foto_fin: "fotos/emily-graduacion.jpg",
+    nombre: "Anaiah Micaela Hernández Licona",
+    foto_inicio: "fotos/inicio/Anaiah Micaela Hernández Licona.jpeg",
+    foto_fin: "",
     mensaje: "Tu sonrisa es el regalo más grande de este año."
   },
   {
-    nombre: "Mateo López",
-    foto_inicio: "fotos/mateo-lopez-inicio.jpg",
-    foto_fin: "fotos/mateo-lopez-graduacion.jpg",
+    nombre: "Andrés Alejandro Herrera Rodriguez",
+    foto_inicio: "fotos/inicio/Andrés Alejandro Herrera Rodriguez.jpeg",
+    foto_fin: "",
     mensaje: "De semillita a gran explorador. ¡Sigue creciendo!"
   },
   {
-    nombre: "Valentina Cruz",
-    foto_inicio: "fotos/valentina-cruz-inicio.jpg",
-    foto_fin: "fotos/valentina-cruz-graduacion.jpg",
+    nombre: "Emma Valeria Lagos Sandoval",
+    foto_inicio: "fotos/inicio/Emma Valeria Lagos Sandoval.jpeg",
+    foto_fin: "",
     mensaje: "Tu sonrisa es el regalo más grande de este año."
   },
   {
-    nombre: "Sebastián Flores",
-    foto_inicio: "fotos/sebastian-flores-inicio.jpg",
-    foto_fin: "fotos/sebastian-flores-graduacion.jpg",
+    nombre: "Jade Julissa Mejía",
+    foto_inicio: "fotos/inicio/Jade Julissa Mejía.jpeg",
+    foto_fin: "",
     mensaje: "Cada paso que das nos llena de orgullo."
   },
   {
-    nombre: "Isabella Morales",
-    foto_inicio: "fotos/isabella-morales-inicio.jpg",
-    foto_fin: "fotos/isabella-morales-graduacion.jpg",
+    nombre: "Julia Yolanda Yanes Castillo",
+    foto_inicio: "fotos/inicio/Julia Yolanda Yanes Castillo.jpeg",
+    foto_fin: "",
     mensaje: "Lista para conquistar el primer grado con amor."
   },
   {
-    nombre: "Emilio Torres",
-    foto_inicio: "fotos/emilio-torres-inicio.jpg",
-    foto_fin: "fotos/emilio-torres-graduacion.jpg",
+    nombre: "Khalessy Mancia Rivera",
+    foto_inicio: "fotos/inicio/Khalessy Mancia Rivera.jpeg",
+    foto_fin: "",
     mensaje: "De pequeño soñador a gran aventurero."
   },
   {
-    nombre: "Camila Herrera",
-    foto_inicio: "fotos/camila-herrera-inicio.jpg",
-    foto_fin: "fotos/camila-herrera-graduacion.jpg",
+    nombre: "Lucrecia Marie Torres",
+    foto_inicio: "fotos/inicio/Lucrecia Marie Torres.jpeg",
+    foto_fin: "",
     mensaje: "Tu alegría contagia a todos a tu alrededor."
   },
   {
-    nombre: "Santiago Mendoza",
-    foto_inicio: "fotos/santiago-mendoza-inicio.jpg",
-    foto_fin: "fotos/santiago-mendoza-graduacion.jpg",
+    nombre: "Mario Gabriel Fuentes Banegas",
+    foto_inicio: "fotos/inicio/Mario Gabriel Fuentes Banegas.jpeg",
+    foto_fin: "",
+    mensaje: "El mundo es tuyo, pequeño campeón."
+  },
+  {
+    nombre: "Pedro Antonio Villatoro",
+    foto_inicio: "fotos/inicio/Pedro Antonio Villatoro.jpeg",
+    foto_fin: "",
+    mensaje: "Cada paso que das nos llena de orgullo."
+  },
+  {
+    nombre: "Richard Guandique Ictech",
+    foto_inicio: "fotos/inicio/Richard Guandique Ictech.jpeg",
+    foto_fin: "",
+    mensaje: "De semillita a gran explorador. ¡Sigue creciendo!"
+  },
+  {
+    nombre: "Royer Josue Mejia",
+    foto_inicio: "fotos/inicio/Royer Josue Mejia.jpeg",
+    foto_fin: "",
+    mensaje: "Tu alegría contagia a todos a tu alrededor."
+  },
+  {
+    nombre: "Sofía Desireé Osorio",
+    foto_inicio: "fotos/inicio/Sofía Desireé Osorio.jpeg",
+    foto_fin: "",
+    mensaje: "Tu sonrisa es el regalo más grande de este año."
+  },
+  {
+    nombre: "Williams Alexander Enamorado Caballero",
+    foto_inicio: "fotos/inicio/Williams Alexander Enamorado Caballero.jpeg",
+    foto_fin: "",
     mensaje: "El mundo es tuyo, pequeño campeón."
   }
-  // ... agrega más niños aquí con el mismo formato
 ];
 
 // Mensaje principal que aparece en la portada
