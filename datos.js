@@ -13,6 +13,12 @@
 
 const GRADUADOS = [
   {
+    nombre: "Emily Marie Madrid Mata",
+    foto_inicio: "fotos/inicio/Emily Marie Madrid Mata.jpeg",
+    foto_fin: "",
+    mensaje: "Tu sonrisa es el regalo más grande de este año."
+  },
+  {
     nombre: "Anaiah Micaela Hernández Licona",
     foto_inicio: "fotos/inicio/Anaiah Micaela Hernández Licona.jpeg",
     foto_fin: "",
@@ -89,6 +95,114 @@ const GRADUADOS = [
     foto_inicio: "fotos/inicio/Williams Alexander Enamorado Caballero.jpeg",
     foto_fin: "",
     mensaje: "El mundo es tuyo, pequeño campeón."
+  },
+  {
+    nombre: "Alaia Martínez",
+    foto_inicio: "fotos/inicio/Alaia Martínez.jpeg",
+    foto_fin: "",
+    mensaje: "Cada paso que das nos llena de orgullo."
+  },
+  {
+    nombre: "Amy Inestroza",
+    foto_inicio: "fotos/inicio/Amy Inestroza.jpeg",
+    foto_fin: "",
+    mensaje: "Tu alegría contagia a todos a tu alrededor."
+  },
+  {
+    nombre: "Athenas Diaz",
+    foto_inicio: "fotos/inicio/Athenas Diaz.jpeg",
+    foto_fin: "",
+    mensaje: "Sigue creciendo con esa curiosidad tan bonita."
+  },
+  {
+    nombre: "Didier Noa Rami Barzayo",
+    foto_inicio: "fotos/inicio/Didier Noa Rami Barzayo.jpeg",
+    foto_fin: "",
+    mensaje: "De semillita a gran explorador. ¡Sigue creciendo!"
+  },
+  {
+    nombre: "Emma Marian Vanegas Pineda",
+    foto_inicio: "fotos/inicio/Emma Marian Vanegas Pineda.jpeg",
+    foto_fin: "",
+    mensaje: "Tu sonrisa ilumina cada recuerdo de este año."
+  },
+  {
+    nombre: "Eunice María Muñoz",
+    foto_inicio: "fotos/inicio/Eunice María Muñoz Preparatoria.jpeg",
+    foto_fin: "",
+    mensaje: "Cada aprendizaje te prepara para nuevas aventuras."
+  },
+  {
+    nombre: "Evan David Lara Osorio",
+    foto_inicio: "fotos/inicio/Evan David Lara Osorio.jpeg",
+    foto_fin: "",
+    mensaje: "El mundo es tuyo, pequeño campeón."
+  },
+  {
+    nombre: "Gael Castillo",
+    foto_inicio: "fotos/inicio/Gael Castillo.jpeg",
+    foto_fin: "",
+    mensaje: "Tu esfuerzo y tu alegría nos llenan de orgullo."
+  },
+  {
+    nombre: "Jimena María Carballo",
+    foto_inicio: "fotos/inicio/Jimena María Carballo.jpeg",
+    foto_fin: "",
+    mensaje: "Tu ternura hizo especial cada día."
+  },
+  {
+    nombre: "Lauren Sophia Carballo García",
+    foto_inicio: "fotos/inicio/Lauren Sophia  Carballo García Prepa.jpeg",
+    foto_fin: "",
+    mensaje: "Lista para seguir conquistando nuevos sueños."
+  },
+  {
+    nombre: "Mateo Pineda",
+    foto_inicio: "fotos/inicio/Mateo Pineda.jpeg",
+    foto_fin: "",
+    mensaje: "De pequeño soñador a gran aventurero."
+  },
+  {
+    nombre: "Mía Isabella Deras",
+    foto_inicio: "fotos/inicio/Mía Isabella Deras.jpeg",
+    foto_fin: "",
+    mensaje: "Tu dulzura acompaña este día tan especial."
+  },
+  {
+    nombre: "Rebeca Icaza Rodriguez",
+    foto_inicio: "fotos/inicio/Rebeca Icaza Rodriguez.jpeg",
+    foto_fin: "",
+    mensaje: "Cada nuevo paso abre una aventura maravillosa."
+  },
+  {
+    nombre: "Rocio Marianne Brizo Lara",
+    foto_inicio: "fotos/inicio/Rocio Marianne Brizo Lara.jpeg",
+    foto_fin: "",
+    mensaje: "Tu energía nos recuerda que todo es posible."
+  },
+  {
+    nombre: "Sara Valentina Dubon",
+    foto_inicio: "fotos/inicio/Sara Valentina Dubon.jpeg",
+    foto_fin: "",
+    mensaje: "Tu sonrisa quedará siempre en nuestros recuerdos."
+  },
+  {
+    nombre: "Sofía Valentina Palacios Giron",
+    foto_inicio: "fotos/inicio/Sofía Valentina Palacios Giron.jpeg",
+    foto_fin: "",
+    mensaje: "Qué hermoso verte crecer, aprender y soñar."
+  },
+  {
+    nombre: "Victoria Jimena Paz",
+    foto_inicio: "fotos/inicio/Victoria Jimena Paz.jpeg",
+    foto_fin: "",
+    mensaje: "Tu valentía te llevará muy lejos."
+  },
+  {
+    nombre: "Zoe Nathalia Cáceres",
+    foto_inicio: "fotos/inicio/Zoe Nathalia Cáceres.jpeg",
+    foto_fin: "",
+    mensaje: "El mundo espera todo lo bueno que llevas dentro."
   }
 ];
 
