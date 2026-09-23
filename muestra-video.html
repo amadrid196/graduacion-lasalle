@@ -1,309 +1,502 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muestra de video - Graduación Prebásica</title>
-  <style>
-    :root {
-      --navy: #0d1b40;
-      --gold: #f5c30a;
-      --cream: #fffdf5;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Muestra de video - Graduación Prebásica</title>
+    <style>
+      :root {
+        --navy: #0d1b40;
+        --gold: #f5c30a;
+        --cream: #fffdf5;
+      }
 
-    * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: #09122d;
-      color: var(--cream);
-      font-family: Georgia, 'Times New Roman', serif;
-    }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #09122d;
+        color: var(--cream);
+        font-family: Georgia, "Times New Roman", serif;
+      }
 
-    .stage {
-      position: relative;
-      width: min(100vw, 1280px);
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      background: var(--navy);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .45);
-    }
+      .stage {
+        position: relative;
+        width: min(100vw, 1280px);
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+        background: var(--navy);
+        box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      }
 
-    .slide {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 900ms ease;
-      background: var(--navy);
-    }
+      .slide {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 900ms ease;
+        background: var(--navy);
+      }
 
-    .slide.active { opacity: 1; visibility: visible; }
+      .slide.active {
+        opacity: 1;
+        visibility: visible;
+      }
 
-    .slide::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(13, 27, 64, .88), rgba(13, 27, 64, .1) 65%), linear-gradient(0deg, rgba(0, 0, 0, .6), transparent 45%);
-    }
+      .slide::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(
+            90deg,
+            rgba(13, 27, 64, 0.88),
+            rgba(13, 27, 64, 0.1) 65%
+          ),
+          linear-gradient(0deg, rgba(0, 0, 0, 0.6), transparent 45%);
+      }
 
-    .slide img {
-      display: block;
-      width: auto;
-      height: auto;
-      max-width: 46%;
-      max-height: 72%;
-      object-position: center;
-      animation: none;
-    }
+      .slide img {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 46%;
+        max-height: 72%;
+        object-position: center;
+        animation: none;
+      }
 
-    .intro, .outro {
-      text-align: center;
-      padding: 8vw;
-      background: radial-gradient(circle at 50% 45%, #27448c, var(--navy) 68%);
-    }
+      .intro,
+      .outro {
+        text-align: center;
+        padding: 8vw;
+        background: radial-gradient(
+          circle at 50% 45%,
+          #27448c,
+          var(--navy) 68%
+        );
+      }
 
-    .intro::before, .outro::before {
-      content: '✦';
-      position: absolute;
-      top: 12%;
-      color: var(--gold);
-      font-size: clamp(2rem, 6vw, 5rem);
-    }
+      .intro::before,
+      .outro::before {
+        content: "✦";
+        position: absolute;
+        top: 12%;
+        color: var(--gold);
+        font-size: clamp(2rem, 6vw, 5rem);
+      }
 
-    .content {
-      position: absolute;
-      z-index: 1;
-      left: clamp(1.5rem, 7vw, 7rem);
-      bottom: clamp(1.5rem, 7vw, 6rem);
-      max-width: 70%;
-    }
+      .content {
+        position: absolute;
+        z-index: 1;
+        left: clamp(1.5rem, 7vw, 7rem);
+        bottom: clamp(1.5rem, 7vw, 6rem);
+        max-width: 70%;
+      }
 
-    .intro .content, .outro .content {
-      position: relative;
-      inset: auto;
-      max-width: 900px;
-    }
+      .intro .content,
+      .outro .content {
+        position: relative;
+        inset: auto;
+        max-width: 900px;
+      }
 
-    .eyebrow {
-      color: var(--gold);
-      font: 700 clamp(.75rem, 1.5vw, 1.2rem)/1.2 Arial, sans-serif;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-    }
+      .eyebrow {
+        color: var(--gold);
+        font:
+          700 clamp(0.75rem, 1.5vw, 1.2rem)/1.2 Arial,
+          sans-serif;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
 
-    h1 {
-      margin: .4em 0;
-      color: var(--gold);
-      font-size: clamp(2.2rem, 7vw, 7rem);
-      line-height: .95;
-    }
+      h1 {
+        margin: 0.4em 0;
+        color: var(--gold);
+        font-size: clamp(2.2rem, 7vw, 7rem);
+        line-height: 0.95;
+      }
 
-    h2 {
-      margin: .2em 0;
-      font-size: clamp(1.6rem, 4vw, 4.5rem);
-      line-height: 1;
-    }
+      h2 {
+        margin: 0.2em 0;
+        font-size: clamp(1.6rem, 4vw, 4.5rem);
+        line-height: 1;
+      }
 
-    p {
-      margin: .8em 0 0;
-      font: 600 clamp(.9rem, 1.7vw, 1.35rem)/1.4 Arial, sans-serif;
-    }
+      p {
+        margin: 0.8em 0 0;
+        font:
+          600 clamp(0.9rem, 1.7vw, 1.35rem)/1.4 Arial,
+          sans-serif;
+      }
 
-    .student-message {
-      max-width: 34rem;
-      color: var(--gold);
-    }
+      .student-message {
+        max-width: 34rem;
+        color: var(--gold);
+      }
 
-    .outro p {
-      max-width: 52rem;
-      margin-inline: auto;
-    }
+      .outro p {
+        max-width: 52rem;
+        margin-inline: auto;
+      }
 
-    .progress {
-      position: absolute;
-      z-index: 2;
-      right: 1.5rem;
-      bottom: 1.5rem;
-      width: min(25vw, 220px);
-      height: 4px;
-      background: rgba(255,255,255,.3);
-    }
+      .progress {
+        position: absolute;
+        z-index: 2;
+        right: 1.5rem;
+        bottom: 1.5rem;
+        width: min(25vw, 220px);
+        height: 4px;
+        background: rgba(255, 255, 255, 0.3);
+      }
 
-    .progress i {
-      display: block;
-      width: 0;
-      height: 100%;
-      background: var(--gold);
-    }
+      .progress i {
+        display: block;
+        width: 0;
+        height: 100%;
+        background: var(--gold);
+      }
 
-    .hint {
-      position: fixed;
-      bottom: 1rem;
-      color: rgba(255,255,255,.65);
-      font: .8rem Arial, sans-serif;
-    }
+      .hint {
+        position: fixed;
+        bottom: 1rem;
+        color: rgba(255, 255, 255, 0.65);
+        font:
+          0.8rem Arial,
+          sans-serif;
+      }
 
-    .music-button {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 5;
-      border: 1px solid rgba(245, 195, 10, .7);
-      border-radius: 999px;
-      padding: .65rem 1rem;
-      color: var(--cream);
-      background: rgba(13, 27, 64, .86);
-      cursor: pointer;
-      font: 700 .85rem Arial, sans-serif;
-    }
+      .music-button {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: 5;
+        border: 1px solid rgba(245, 195, 10, 0.7);
+        border-radius: 999px;
+        padding: 0.65rem 1rem;
+        color: var(--cream);
+        background: rgba(13, 27, 64, 0.86);
+        cursor: pointer;
+        font:
+          700 0.85rem Arial,
+          sans-serif;
+      }
 
-    .music-button.active { color: var(--navy); background: var(--gold); }
+      .music-button.active {
+        color: var(--navy);
+        background: var(--gold);
+      }
 
-    @keyframes zoom {
-      from { transform: scale(1.04); }
-      to { transform: scale(1); }
-    }
-  </style>
-</head>
-<body>
-  <main class="stage" aria-label="Muestra de video de graduación">
-    <section class="slide intro active">
-      <div class="content">
-        <div class="eyebrow">Instituto Experimental La Salle</div>
-        <h1>Pequeños<br>Grandes Pasos</h1>
-        <p>Promoción Prebásica 2025 – 2026</p>
-      </div>
-    </section>
+      @keyframes zoom {
+        from {
+          transform: scale(1.04);
+        }
+        to {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stage" aria-label="Muestra de video de graduación">
+      <section class="slide intro active">
+        <div class="content">
+          <div class="eyebrow">Instituto Experimental La Salle</div>
+          <h1>Pequeños<br />Grandes Pasos</h1>
+          <p>Promoción Prebásica 2024 – 2026</p>
+        </div>
+      </section>
 
-    <section class="slide" data-name="Anaiah Micaela Hernández Licona"><img src="fotos/inicio/Anaiah Micaela Hernández Licona.jpeg" alt="Anaiah Micaela Hernández Licona"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Anaiah Micaela Hernández Licona</h2><p class="student-message">Cada pequeño paso nos llena de orgullo.</p></div></section>
-    <section class="slide" data-name="Andrés Alejandro Herrera Rodriguez"><img src="fotos/inicio/Andrés Alejandro Herrera Rodriguez.jpeg" alt="Andrés Alejandro Herrera Rodriguez"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Andrés Alejandro Herrera Rodriguez</h2><p class="student-message">Llegaste con sueños y hoy vuelas más alto.</p></div></section>
-    <section class="slide" data-name="Emma Valeria Lagos Sandoval"><img src="fotos/inicio/Emma Valeria Lagos Sandoval.jpeg" alt="Emma Valeria Lagos Sandoval"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Emma Valeria Lagos Sandoval</h2><p class="student-message">Tu alegría hizo más bonito cada día.</p></div></section>
-    <section class="slide" data-name="Jade Julissa Mejía"><img src="fotos/inicio/Jade Julissa Mejía.jpeg" alt="Jade Julissa Mejía"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Jade Julissa Mejía</h2><p class="student-message">Aprendiste, creciste y dejaste tu huella.</p></div></section>
-    <section class="slide" data-name="Julia Yolanda Yanes Castillo"><img src="fotos/inicio/Julia Yolanda Yanes Castillo.jpeg" alt="Julia Yolanda Yanes Castillo"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Julia Yolanda Yanes Castillo</h2><p class="student-message">Tu ternura ilumina todo lo que haces.</p></div></section>
-    <section class="slide" data-name="Khalessy Mancia Rivera"><img src="fotos/inicio/Khalessy Mancia Rivera.jpeg" alt="Khalessy Mancia Rivera"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Khalessy Mancia Rivera</h2><p class="student-message">Cada descubrimiento abrió una nueva aventura.</p></div></section>
-    <section class="slide" data-name="Lucrecia Marie Torres"><img src="fotos/inicio/Lucrecia Marie Torres.jpeg" alt="Lucrecia Marie Torres"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Lucrecia Marie Torres</h2><p class="student-message">Tu sonrisa quedará en nuestros recuerdos.</p></div></section>
-    <section class="slide" data-name="Mario Gabriel Fuentes Banegas"><img src="fotos/inicio/Mario Gabriel Fuentes Banegas.jpeg" alt="Mario Gabriel Fuentes Banegas"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Mario Gabriel Fuentes Banegas</h2><p class="student-message">Hoy celebramos todo lo que has logrado.</p></div></section>
-    <section class="slide" data-name="Pedro Antonio Villatoro"><img src="fotos/inicio/Pedro Antonio Villatoro.jpeg" alt="Pedro Antonio Villatoro"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Pedro Antonio Villatoro</h2><p class="student-message">Tu valentía te llevará muy lejos.</p></div></section>
-    <section class="slide" data-name="Richard Guandique Ictech"><img src="fotos/inicio/Richard Guandique Ictech.jpeg" alt="Richard Guandique Ictech"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Richard Guandique Ictech</h2><p class="student-message">Qué hermoso verte crecer y aprender.</p></div></section>
-    <section class="slide" data-name="Royer Josue Mejia"><img src="fotos/inicio/Royer Josue Mejia.jpeg" alt="Royer Josue Mejia"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Royer Josue Mejia</h2><p class="student-message">Tu energía nos recuerda que todo es posible.</p></div></section>
-    <section class="slide" data-name="Sofía Desireé Osorio"><img src="fotos/inicio/Sofía Desireé Osorio.jpeg" alt="Sofía Desireé Osorio"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Sofía Desireé Osorio</h2><p class="student-message">Tu dulzura acompaña este día especial.</p></div></section>
-    <section class="slide" data-name="Williams Alexander Enamorado Caballero"><img src="fotos/inicio/Williams Alexander Enamorado Caballero.jpeg" alt="Williams Alexander Enamorado Caballero"><div class="content"><div class="eyebrow">Nuestra graduación</div><h2>Williams Alexander Enamorado Caballero</h2><p class="student-message">El mundo espera todo lo bueno que llevas dentro.</p></div></section>
+      <section class="slide" data-name="Anaiah Micaela Hernández Licona">
+        <img
+          src="fotos/inicio/Anaiah Micaela Hernández Licona.jpeg"
+          alt="Anaiah Micaela Hernández Licona"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Anaiah Micaela Hernández Licona</h2>
+          <p class="student-message">Cada pequeño paso nos llena de orgullo.</p>
+        </div>
+      </section>
+      <section class="slide" data-name="Andrés Alejandro Herrera Rodriguez">
+        <img
+          src="fotos/inicio/Andrés Alejandro Herrera Rodriguez.jpeg"
+          alt="Andrés Alejandro Herrera Rodriguez"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Andrés Alejandro Herrera Rodriguez</h2>
+          <p class="student-message">
+            Llegaste con sueños y hoy vuelas más alto.
+          </p>
+        </div>
+      </section>
+      <section class="slide" data-name="Emma Valeria Lagos Sandoval">
+        <img
+          src="fotos/inicio/Emma Valeria Lagos Sandoval.jpeg"
+          alt="Emma Valeria Lagos Sandoval"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Emma Valeria Lagos Sandoval</h2>
+          <p class="student-message">Tu alegría hizo más bonito cada día.</p>
+        </div>
+      </section>
+      <section class="slide" data-name="Jade Julissa Mejía">
+        <img
+          src="fotos/inicio/Jade Julissa Mejía.jpeg"
+          alt="Jade Julissa Mejía"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Jade Julissa Mejía</h2>
+          <p class="student-message">
+            Aprendiste, creciste y dejaste tu huella.
+          </p>
+        </div>
+      </section>
+      <section class="slide" data-name="Julia Yolanda Yanes Castillo">
+        <img
+          src="fotos/inicio/Julia Yolanda Yanes Castillo.jpeg"
+          alt="Julia Yolanda Yanes Castillo"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Julia Yolanda Yanes Castillo</h2>
+          <p class="student-message">Tu ternura ilumina todo lo que haces.</p>
+        </div>
+      </section>
+      <section class="slide" data-name="Khalessy Mancia Rivera">
+        <img
+          src="fotos/inicio/Khalessy Mancia Rivera.jpeg"
+          alt="Khalessy Mancia Rivera"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Khalessy Mancia Rivera</h2>
+          <p class="student-message">
+            Cada descubrimiento abrió una nueva aventura.
+          </p>
+        </div>
+      </section>
+      <section class="slide" data-name="Lucrecia Marie Torres">
+        <img
+          src="fotos/inicio/Lucrecia Marie Torres.jpeg"
+          alt="Lucrecia Marie Torres"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Lucrecia Marie Torres</h2>
+          <p class="student-message">
+            Tu sonrisa quedará en nuestros recuerdos.
+          </p>
+        </div>
+      </section>
+      <section class="slide" data-name="Mario Gabriel Fuentes Banegas">
+        <img
+          src="fotos/inicio/Mario Gabriel Fuentes Banegas.jpeg"
+          alt="Mario Gabriel Fuentes Banegas"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Mario Gabriel Fuentes Banegas</h2>
+          <p class="student-message">Hoy celebramos todo lo que has logrado.</p>
+        </div>
+      </section>
+      <section class="slide" data-name="Pedro Antonio Villatoro">
+        <img
+          src="fotos/inicio/Pedro Antonio Villatoro.jpeg"
+          alt="Pedro Antonio Villatoro"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Pedro Antonio Villatoro</h2>
+          <p class="student-message">Tu valentía te llevará muy lejos.</p>
+        </div>
+      </section>
+      <section class="slide" data-name="Richard Guandique Ictech">
+        <img
+          src="fotos/inicio/Richard Guandique Ictech.jpeg"
+          alt="Richard Guandique Ictech"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Richard Guandique Ictech</h2>
+          <p class="student-message">Qué hermoso verte crecer y aprender.</p>
+        </div>
+      </section>
+      <section class="slide" data-name="Royer Josue Mejia">
+        <img
+          src="fotos/inicio/Royer Josue Mejia.jpeg"
+          alt="Royer Josue Mejia"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Royer Josue Mejia</h2>
+          <p class="student-message">
+            Tu energía nos recuerda que todo es posible.
+          </p>
+        </div>
+      </section>
+      <section class="slide" data-name="Sofía Desireé Osorio">
+        <img
+          src="fotos/inicio/Sofía Desireé Osorio.jpeg"
+          alt="Sofía Desireé Osorio"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Sofía Desireé Osorio</h2>
+          <p class="student-message">Tu dulzura acompaña este día especial.</p>
+        </div>
+      </section>
+      <section class="slide" data-name="Williams Alexander Enamorado Caballero">
+        <img
+          src="fotos/inicio/Williams Alexander Enamorado Caballero.jpeg"
+          alt="Williams Alexander Enamorado Caballero"
+        />
+        <div class="content">
+          <div class="eyebrow">Nuestra graduación</div>
+          <h2>Williams Alexander Enamorado Caballero</h2>
+          <p class="student-message">
+            El mundo espera todo lo bueno que llevas dentro.
+          </p>
+        </div>
+      </section>
 
-    <section class="slide outro">
-      <div class="content">
-        <div class="eyebrow">Con cariño</div>
-        <h2>Un recuerdo para toda la vida</h2>
-        <p>Hoy celebramos cada pequeño gran paso. Cada sonrisa, cada aprendizaje y cada aventura forman un recuerdo que llevaremos siempre en el corazón. Felicidades, queridos graduados.</p>
-      </div>
-    </section>
-    <div class="progress"><i></i></div>
-  </main>
-  <button class="music-button" type="button" aria-pressed="false">♫ Activar música</button>
-  <div class="hint">La muestra avanza automáticamente · haz clic para pausar o continuar</div>
+      <section class="slide outro">
+        <div class="content">
+          <div class="eyebrow">Con cariño</div>
+          <h2>Un recuerdo para toda la vida</h2>
+          <p>
+            Hoy celebramos cada pequeño gran paso. Cada sonrisa, cada
+            aprendizaje y cada aventura forman un recuerdo que llevaremos
+            siempre en el corazón. Felicidades, queridos graduados.
+          </p>
+        </div>
+      </section>
+      <div class="progress"><i></i></div>
+    </main>
+    <button class="music-button" type="button" aria-pressed="false">
+      ♫ Activar música
+    </button>
+    <div class="hint">
+      La muestra avanza automáticamente · haz clic para pausar o continuar
+    </div>
 
-  <script>
-    const slides = [...document.querySelectorAll('.slide')];
-    const progress = document.querySelector('.progress i');
-    const duration = 4200;
-    let current = 0;
-    let playing = true;
-    let timer;
-    let started;
-    let audioContext;
-    let musicTimer;
-    let musicOn = false;
+    <script>
+      const slides = [...document.querySelectorAll(".slide")];
+      const progress = document.querySelector(".progress i");
+      const duration = 4200;
+      let current = 0;
+      let playing = true;
+      let timer;
+      let started;
+      let audioContext;
+      let musicTimer;
+      let musicOn = false;
 
-    const melody = [261.63, 329.63, 392, 523.25, 493.88, 392, 440, 523.25, 587.33, 523.25, 392, 329.63];
-    const chords = [
-      [261.63, 329.63, 392],
-      [293.66, 369.99, 440],
-      [349.23, 440, 523.25],
-      [392, 493.88, 587.33]
-    ];
+      const melody = [
+        261.63, 329.63, 392, 523.25, 493.88, 392, 440, 523.25, 587.33, 523.25,
+        392, 329.63,
+      ];
+      const chords = [
+        [261.63, 329.63, 392],
+        [293.66, 369.99, 440],
+        [349.23, 440, 523.25],
+        [392, 493.88, 587.33],
+      ];
 
-    function playNote(frequency, startTime) {
-      const oscillator = audioContext.createOscillator();
-      const gain = audioContext.createGain();
-      oscillator.type = 'triangle';
-      oscillator.frequency.value = frequency;
-      gain.gain.setValueAtTime(0, startTime);
-      gain.gain.linearRampToValueAtTime(.045, startTime + .04);
-      gain.gain.exponentialRampToValueAtTime(.001, startTime + .72);
-      oscillator.connect(gain).connect(audioContext.destination);
-      oscillator.start(startTime);
-      oscillator.stop(startTime + .75);
-    }
-
-    function playChord(frequencies, startTime) {
-      frequencies.forEach((frequency, index) => {
+      function playNote(frequency, startTime) {
         const oscillator = audioContext.createOscillator();
         const gain = audioContext.createGain();
-        oscillator.type = 'sine';
-        oscillator.frequency.value = frequency / 2;
+        oscillator.type = "triangle";
+        oscillator.frequency.value = frequency;
         gain.gain.setValueAtTime(0, startTime);
-        gain.gain.linearRampToValueAtTime(.018, startTime + .12);
-        gain.gain.exponentialRampToValueAtTime(.001, startTime + 2.7);
+        gain.gain.linearRampToValueAtTime(0.045, startTime + 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.72);
         oscillator.connect(gain).connect(audioContext.destination);
-        oscillator.start(startTime + index * .03);
-        oscillator.stop(startTime + 2.8);
+        oscillator.start(startTime);
+        oscillator.stop(startTime + 0.75);
+      }
+
+      function playChord(frequencies, startTime) {
+        frequencies.forEach((frequency, index) => {
+          const oscillator = audioContext.createOscillator();
+          const gain = audioContext.createGain();
+          oscillator.type = "sine";
+          oscillator.frequency.value = frequency / 2;
+          gain.gain.setValueAtTime(0, startTime);
+          gain.gain.linearRampToValueAtTime(0.018, startTime + 0.12);
+          gain.gain.exponentialRampToValueAtTime(0.001, startTime + 2.7);
+          oscillator.connect(gain).connect(audioContext.destination);
+          oscillator.start(startTime + index * 0.03);
+          oscillator.stop(startTime + 2.8);
+        });
+      }
+
+      function playMelody() {
+        if (!musicOn) return;
+        const now = audioContext.currentTime;
+        melody.forEach((frequency, index) =>
+          playNote(frequency, now + index * 0.55),
+        );
+        chords.forEach((chord, index) => playChord(chord, now + index * 1.65));
+        musicTimer = setTimeout(playMelody, melody.length * 550);
+      }
+
+      document
+        .querySelector(".music-button")
+        .addEventListener("click", async (event) => {
+          const button = event.currentTarget;
+          if (!audioContext) audioContext = new AudioContext();
+          if (audioContext.state === "suspended") await audioContext.resume();
+          musicOn = !musicOn;
+          clearTimeout(musicTimer);
+          button.classList.toggle("active", musicOn);
+          button.setAttribute("aria-pressed", String(musicOn));
+          button.textContent = musicOn
+            ? "♫ Música activada"
+            : "♫ Activar música";
+          if (musicOn) playMelody();
+        });
+
+      function show(index) {
+        slides[current].classList.remove("active");
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add("active");
+        progress.style.transition = "none";
+        progress.style.width = "0";
+        requestAnimationFrame(() => {
+          progress.style.transition = `width ${duration}ms linear`;
+          progress.style.width = "100%";
+        });
+      }
+
+      function play() {
+        clearTimeout(timer);
+        if (!playing) return;
+        started = performance.now();
+        timer = setTimeout(() => {
+          show(current + 1);
+          play();
+        }, duration);
+      }
+
+      document.querySelector(".stage").addEventListener("click", () => {
+        playing = !playing;
+        if (playing) play();
+        else clearTimeout(timer);
       });
-    }
 
-    function playMelody() {
-      if (!musicOn) return;
-      const now = audioContext.currentTime;
-      melody.forEach((frequency, index) => playNote(frequency, now + index * .55));
-      chords.forEach((chord, index) => playChord(chord, now + index * 1.65));
-      musicTimer = setTimeout(playMelody, melody.length * 550);
-    }
-
-    document.querySelector('.music-button').addEventListener('click', async (event) => {
-      const button = event.currentTarget;
-      if (!audioContext) audioContext = new AudioContext();
-      if (audioContext.state === 'suspended') await audioContext.resume();
-      musicOn = !musicOn;
-      clearTimeout(musicTimer);
-      button.classList.toggle('active', musicOn);
-      button.setAttribute('aria-pressed', String(musicOn));
-      button.textContent = musicOn ? '♫ Música activada' : '♫ Activar música';
-      if (musicOn) playMelody();
-    });
-
-    function show(index) {
-      slides[current].classList.remove('active');
-      current = (index + slides.length) % slides.length;
-      slides[current].classList.add('active');
-      progress.style.transition = 'none';
-      progress.style.width = '0';
-      requestAnimationFrame(() => {
-        progress.style.transition = `width ${duration}ms linear`;
-        progress.style.width = '100%';
-      });
-    }
-
-    function play() {
-      clearTimeout(timer);
-      if (!playing) return;
-      started = performance.now();
-      timer = setTimeout(() => {
-        show(current + 1);
-        play();
-      }, duration);
-    }
-
-    document.querySelector('.stage').addEventListener('click', () => {
-      playing = !playing;
-      if (playing) play(); else clearTimeout(timer);
-    });
-
-    show(0);
-    play();
-  </script>
-</body>
+      show(0);
+      play();
+    </script>
+  </body>
 </html>

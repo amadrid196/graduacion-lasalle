@@ -287,7 +287,7 @@ const GRADUADOS = [
 // Mensaje principal que aparece en la portada
 const MENSAJE_PRINCIPAL = {
   titulo: "Pequeños Grandes Pasos",
-  subtitulo: "Promoción Prebásica 2025 – 2026",
+  subtitulo: "Promoción Prebásica 2024 – 2026",
   colegio: "Instituto Experimental La Salle",
   mensaje:
     "Hoy no solo celebramos una graduación — celebramos el valor de cada primero: el primer amigo, la primera letra, el primer logro. Estos niños llegaron como semillas llenas de posibilidad, y hoy florecen ante nosotros listos para el mundo que les espera.",
