@@ -1,1267 +1,1336 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Graduación Prebásica 2026</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
-    rel="stylesheet" />
-  <style>
-    :root {
-      --navy: #0D1B40;
-      --blue: #1A3A8F;
-      --gold: #F5C30A;
-      --gold2: #E8A800;
-      --red: #E8362A;
-      --cream: #FFFDF5;
-      --white: #FFFFFF;
-      --muted: #6B7A9A;
-      --ink: #0D1B40;
-      --green: #1DB87A;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0
-    }
-
-    html {
-      scroll-behavior: smooth
-    }
-
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: var(--cream);
-      color: var(--ink);
-      overflow-x: hidden
-    }
-
-    /* ══════════════════════════════════════
-   CONFETTI
-══════════════════════════════════════ */
-    #confetti-canvas {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 999
-    }
-
-    /* ══════════════════════════════════════
-   HERO
-══════════════════════════════════════ */
-    .hero {
-      position: relative;
-      min-height: 100svh;
-      background: var(--navy);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem 1.5rem 5rem;
-      overflow: hidden;
-    }
-
-    /* Líneas de cuaderno en el fondo */
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: repeating-linear-gradient(transparent,
-          transparent 39px,
-          rgba(255, 255, 255, .04) 39px,
-          rgba(255, 255, 255, .04) 40px);
-      background-size: 100% 40px;
-    }
-
-    /* Margen rojo de cuaderno */
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 88px;
-      width: 2px;
-      background: rgba(232, 54, 42, .35);
-    }
-
-    /* Ondas en la parte inferior */
-    .hero-wave {
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      right: 0;
-      height: 100px;
-      overflow: hidden;
-    }
-
-    .hero-wave svg {
-      display: block;
-      width: 100%;
-      height: 100%
-    }
-
-    /* Elementos decorativos flotantes */
-    .deco {
-      position: absolute;
-      font-size: 2.4rem;
-      animation: floatDeco 5s ease-in-out infinite;
-      pointer-events: none;
-      user-select: none;
-      opacity: .75;
-    }
-
-    .deco:nth-child(1) {
-      top: 10%;
-      left: 8%;
-      animation-delay: 0s
-    }
-
-    .deco:nth-child(2) {
-      top: 18%;
-      right: 9%;
-      animation-delay: .8s;
-      font-size: 2rem
-    }
-
-    .deco:nth-child(3) {
-      top: 60%;
-      left: 5%;
-      animation-delay: 1.6s;
-      font-size: 1.8rem
-    }
-
-    .deco:nth-child(4) {
-      top: 55%;
-      right: 6%;
-      animation-delay: .4s
-    }
-
-    .deco:nth-child(5) {
-      top: 35%;
-      left: 14%;
-      animation-delay: 2s;
-      font-size: 1.6rem
-    }
-
-    .deco:nth-child(6) {
-      top: 78%;
-      right: 12%;
-      animation-delay: 1.2s;
-      font-size: 1.5rem
-    }
-
-    .deco:nth-child(7) {
-      top: 28%;
-      right: 18%;
-      animation-delay: 2.4s;
-      font-size: 2rem
-    }
-
-    .deco:nth-child(8) {
-      top: 72%;
-      left: 15%;
-      animation-delay: .6s;
-      font-size: 1.7rem
-    }
-
-    @keyframes floatDeco {
-
-      0%,
-      100% {
-        transform: translateY(0) rotate(-4deg)
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Graduación Prebásica 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #0d1b40;
+        --blue: #1a3a8f;
+        --gold: #f5c30a;
+        --gold2: #e8a800;
+        --red: #e8362a;
+        --cream: #fffdf5;
+        --white: #ffffff;
+        --muted: #6b7a9a;
+        --ink: #0d1b40;
+        --green: #1db87a;
       }
-
-      50% {
-        transform: translateY(-14px) rotate(4deg)
-      }
-    }
-
-    /* Diploma badge */
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-      background: var(--gold);
-      color: var(--navy);
-      font-weight: 800;
-      font-size: .78rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      padding: .45rem 1.3rem;
-      border-radius: 999px;
-      margin-bottom: 2.2rem;
-      box-shadow: 0 0 0 4px rgba(245, 195, 10, .25);
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-year {
-      font-family: 'Fredoka One', cursive;
-      font-size: clamp(5rem, 14vw, 11rem);
-      line-height: 1;
-      color: transparent;
-      -webkit-text-stroke: 2px rgba(255, 255, 255, .12);
-      position: absolute;
-      bottom: 8%;
-      left: 50%;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .hero-title {
-      font-family: 'Fredoka One', cursive;
-      font-size: clamp(2.8rem, 8vw, 6rem);
-      line-height: 1.05;
-      color: var(--white);
-      position: relative;
-      z-index: 1;
-      margin-bottom: .6rem;
-      text-shadow: 0 4px 32px rgba(0, 0, 0, .4);
-    }
-
-    .hero-title .accent {
-      color: var(--gold);
-      display: block;
-    }
-
-    .hero-school {
-      font-size: clamp(.85rem, 2vw, 1rem);
-      font-weight: 700;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .55);
-      position: relative;
-      z-index: 1;
-      margin-bottom: 1.8rem;
-    }
-
-    .hero-msg {
-      font-size: clamp(.95rem, 2.2vw, 1.15rem);
-      color: rgba(255, 255, 255, .75);
-      max-width: 520px;
-      line-height: 1.75;
-      position: relative;
-      z-index: 1;
-      margin-bottom: 2.6rem;
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: .6rem;
-      background: var(--gold);
-      color: var(--navy);
-      font-weight: 800;
-      font-size: 1rem;
-      padding: .9rem 2.4rem;
-      border-radius: 999px;
-      text-decoration: none;
-      position: relative;
-      z-index: 1;
-      transition: transform .2s, box-shadow .2s;
-      box-shadow: 0 6px 28px rgba(245, 195, 10, .45);
-    }
-
-    .hero-cta:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(245, 195, 10, .55)
-    }
-
-    .hero-cta svg {
-      transition: transform .2s
-    }
-
-    .hero-cta:hover svg {
-      transform: translateX(3px)
-    }
-
-    /* Diploma decorativo centrado arriba */
-    .diploma-ring {
-      position: relative;
-      z-index: 1;
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.8rem;
-      margin: 0 auto 1.8rem;
-      box-shadow: 0 0 0 8px rgba(245, 195, 10, .2), 0 0 0 16px rgba(245, 195, 10, .08);
-      animation: pulseRing 3s ease-in-out infinite;
-    }
-
-    @keyframes pulseRing {
-
-      0%,
-      100% {
-        box-shadow: 0 0 0 8px rgba(245, 195, 10, .2), 0 0 0 16px rgba(245, 195, 10, .08)
-      }
-
-      50% {
-        box-shadow: 0 0 0 12px rgba(245, 195, 10, .3), 0 0 0 24px rgba(245, 195, 10, .12)
-      }
-    }
-
-    /* ══════════════════════════════════════
-   STATS BAND
-══════════════════════════════════════ */
-    .stats-band {
-      background: var(--blue);
-      padding: 2.2rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 2;
-    }
-
-    .stat {
-      flex: 1 1 180px;
-      text-align: center;
-      padding: 1rem 1.5rem;
-      position: relative;
-    }
-
-    .stat:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 20%;
-      bottom: 20%;
-      width: 1px;
-      background: rgba(255, 255, 255, .15);
-    }
-
-    .stat-num {
-      font-family: 'Fredoka One', cursive;
-      font-size: 2.6rem;
-      color: var(--gold);
-      line-height: 1;
-      display: block;
-    }
-
-    .stat-label {
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, .6);
-      margin-top: .3rem;
-      display: block;
-    }
-
-    /* ══════════════════════════════════════
-   MENSAJE SECTION
-══════════════════════════════════════ */
-    .mensaje-section {
-      padding: 5rem 1.5rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mensaje-section::before {
-      content: '';
-      position: absolute;
-      top: -60px;
-      left: -60px;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: rgba(245, 195, 10, .06);
-    }
-
-    .mensaje-section::after {
-      content: '';
-      position: absolute;
-      bottom: -80px;
-      right: -40px;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: rgba(26, 58, 143, .06);
-    }
-
-    .mensaje-inner {
-      max-width: 780px;
-      margin: 0 auto;
-      background: var(--white);
-      border-radius: 28px;
-      padding: 3rem 3.5rem;
-      box-shadow: 0 8px 60px rgba(13, 27, 64, .1);
-      position: relative;
-      border-top: 6px solid var(--gold);
-    }
-
-    .mensaje-inner::before {
-      content: '"';
-      font-family: 'Fredoka One', cursive;
-      font-size: 8rem;
-      color: var(--gold);
-      opacity: .15;
-      position: absolute;
-      top: -1rem;
-      left: 1.5rem;
-      line-height: 1;
-    }
-
-    .mensaje-eyebrow {
-      font-size: .72rem;
-      font-weight: 800;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--gold2);
-      margin-bottom: 1rem;
-    }
-
-    .mensaje-text {
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
-      line-height: 1.85;
-      color: #3A4A6A;
-      font-weight: 400;
-      position: relative;
-      z-index: 1;
-    }
-
-    .firma {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(13, 27, 64, .08);
-    }
-
-    .firma-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--navy));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      flex-shrink: 0;
-    }
-
-    .firma-nombre {
-      font-weight: 700;
-      font-size: .95rem;
-      color: var(--ink)
-    }
-
-    .firma-rol {
-      font-size: .78rem;
-      color: var(--muted)
-    }
-
-    /* ══════════════════════════════════════
-   GALERÍA
-══════════════════════════════════════ */
-    .galeria-section {
-      padding: 2rem 1.5rem 6rem;
-      background: linear-gradient(180deg, var(--cream) 0%, #EEF2FB 100%);
-    }
-
-    .galeria-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      background: rgba(26, 58, 143, .1);
-      color: var(--blue);
-      font-weight: 700;
-      font-size: .75rem;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      padding: .4rem 1rem;
-      border-radius: 999px;
-      margin-bottom: 1rem;
-    }
-
-    .section-h2 {
-      font-family: 'Fredoka One', cursive;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      color: var(--navy);
-      margin-bottom: .5rem;
-    }
-
-    .section-hint {
-      color: var(--muted);
-      font-size: .9rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .4rem;
-    }
-
-    /* Buscador */
-    .search-wrap {
-      max-width: 440px;
-      margin: 0 auto 2.5rem;
-      position: relative;
-    }
-
-    .search-wrap svg {
-      position: absolute;
-      left: 1.1rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--muted);
-      pointer-events: none;
-    }
-
-    #buscar {
-      width: 100%;
-      padding: .9rem 1.2rem .9rem 3rem;
-      border: 2px solid transparent;
-      border-radius: 999px;
-      background: var(--white);
-      box-shadow: 0 4px 20px rgba(13, 27, 64, .1);
-      font-family: 'Nunito', sans-serif;
-      font-size: 1rem;
-      color: var(--ink);
-      transition: border-color .2s, box-shadow .2s;
-      outline: none;
-    }
-
-    #buscar:focus {
-      border-color: var(--blue);
-      box-shadow: 0 0 0 4px rgba(26, 58, 143, .12);
-    }
-
-    #buscar::placeholder {
-      color: var(--muted)
-    }
-
-    /* Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-      gap: 1.5rem;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-
-    /* ══════════════════════════════════════
-   CARDS
-══════════════════════════════════════ */
-    .card {
-      background: var(--white);
-      border-radius: 20px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), box-shadow .3s;
-      box-shadow: 0 4px 20px rgba(13, 27, 64, .08);
-      position: relative;
-    }
-
-    .card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 60px rgba(13, 27, 64, .18);
-    }
-
-    /* Número de graduado */
-    .card-num {
-      position: absolute;
-      top: .7rem;
-      left: .7rem;
-      z-index: 6;
-      background: var(--navy);
-      color: var(--gold);
-      font-family: 'Fredoka One', cursive;
-      font-size: .75rem;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
-    }
-
-    /* Fotos */
-    .card-photo {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 3/4;
-      background: #D0DAEA;
-      overflow: hidden;
-    }
-
-    .card-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    img.foto-inicio {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-    }
-
-    img.foto-fin {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      clip-path: inset(0 100% 0 0);
-      transition: clip-path .75s cubic-bezier(.77, 0, .18, 1);
-    }
-
-    .card:hover img.foto-fin,
-    .card.touched img.foto-fin {
-      clip-path: inset(0 0% 0 0);
-    }
-
-    /* Sello de graduación */
-    .card-sello {
-      position: absolute;
-      bottom: .7rem;
-      right: .7rem;
-      z-index: 5;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, .25);
-      transform: scale(0) rotate(-15deg);
-      transition: transform .4s cubic-bezier(.34, 1.56, .64, 1) .5s;
-      pointer-events: none;
-    }
-
-    .card:hover .card-sello,
-    .card.touched .card-sello {
-      transform: scale(1) rotate(8deg);
-    }
-
-    /* Etiqueta antes/ahora */
-    .card-label {
-      position: absolute;
-      bottom: .75rem;
-      left: .75rem;
-      z-index: 5;
-      background: rgba(13, 27, 64, .75);
-      backdrop-filter: blur(6px);
-      color: var(--white);
-      font-size: .65rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      padding: .28rem .7rem;
-      border-radius: 999px;
-      opacity: 0;
-      transition: opacity .3s;
-      pointer-events: none;
-    }
-
-    .card:hover .card-label,
-    .card.touched .card-label {
-      opacity: 1
-    }
-
-    /* Placeholder sin foto */
-    .card-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #D0DAEA, #E8EEF8);
-      color: var(--muted);
-      font-size: .8rem;
-      gap: .5rem;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    .card-placeholder span {
-      font-size: 2.2rem;
-      opacity: .5
-    }
-
-    /* Info inferior */
-    .card-body {
-      padding: 1rem 1.1rem 1.2rem;
-      background: var(--white);
-      position: relative;
-    }
-
-    /* Línea de color por inicial */
-    .card-body::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 1.1rem;
-      right: 1.1rem;
-      height: 3px;
-      background: linear-gradient(90deg, var(--gold), var(--blue));
-      border-radius: 0 0 3px 3px;
-    }
-
-    .card-name {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.05rem;
-      color: var(--navy);
-      line-height: 1.2;
-      margin-bottom: .35rem;
-    }
-
-    .card-msg {
-      font-size: .76rem;
-      color: var(--muted);
-      line-height: 1.45;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    /* Sin resultados */
-    #sin-resultados {
-      grid-column: 1/-1;
-      text-align: center;
-      padding: 5rem 1rem;
-      color: var(--muted);
-      display: none;
-    }
-
-    /* ══════════════════════════════════════
-   MODAL
-══════════════════════════════════════ */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      background: rgba(7, 12, 26, .85);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .3s;
-    }
-
-    .modal-overlay.open {
-      opacity: 1;
-      pointer-events: all
-    }
-
-    .modal {
-      background: var(--white);
-      border-radius: 28px;
-      box-shadow: 0 32px 100px rgba(0, 0, 0, .45);
-      max-width: 820px;
-      width: 100%;
-      max-height: 92svh;
-      overflow-y: auto;
-      transform: scale(.9) translateY(30px);
-      transition: transform .4s cubic-bezier(.34, 1.56, .64, 1);
-      position: relative;
-    }
-
-    .modal-overlay.open .modal {
-      transform: scale(1) translateY(0)
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      z-index: 10;
-      width: 40px;
-      height: 40px;
-      border: none;
-      background: rgba(13, 27, 64, .08);
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 1.1rem;
-      font-weight: 700;
-      transition: background .2s, color .2s, transform .2s;
-    }
-
-    .modal-close:hover {
-      background: var(--navy);
-      color: var(--white);
-      transform: rotate(90deg)
-    }
-
-    /* Fotos del modal */
-    .modal-photos {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .modal-photo-frame {
-      position: relative;
-      aspect-ratio: 3/4;
-      overflow: hidden;
-    }
-
-    .modal-photo-frame:first-child {
-      border-radius: 28px 0 0 0
-    }
-
-    .modal-photo-frame:last-child {
-      border-radius: 0 28px 0 0
-    }
-
-    .modal-photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* reveal on modal open */
-    .modal-overlay.open .modal-photo-frame:last-child img {
-      animation: revealSlide .9s .2s cubic-bezier(.77, 0, .18, 1) both;
-    }
-
-    @keyframes revealSlide {
-      from {
-        clip-path: inset(0 100% 0 0)
-      }
-
-      to {
-        clip-path: inset(0 0% 0 0)
-      }
-    }
-
-    .modal-photo-tag {
-      position: absolute;
-      top: .8rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(13, 27, 64, .8);
-      backdrop-filter: blur(6px);
-      color: var(--white);
-      font-size: .68rem;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: .3rem .9rem;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-
-    .modal-photo-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #D0DAEA, #E8EEF8);
-      color: var(--muted);
-      gap: .5rem;
-      font-size: .85rem;
-      text-align: center;
-      padding: 1.5rem;
-    }
-
-    /* Cuerpo del modal */
-    .modal-body {
-      padding: 2rem 2.5rem 2.5rem;
-      text-align: center;
-      position: relative;
-    }
-
-    /* Banda dorada */
-    .modal-gold-band {
-      height: 6px;
-      background: linear-gradient(90deg, var(--red), var(--gold), var(--blue), var(--green), var(--gold));
-      background-size: 300% 100%;
-      animation: bandScroll 4s linear infinite;
-    }
-
-    @keyframes bandScroll {
-      0% {
-        background-position: 0% 0
-      }
-
-      100% {
-        background-position: 300% 0
-      }
-    }
-
-    .modal-emoji {
-      font-size: 3rem;
-      display: block;
-      margin: .8rem auto;
-      animation: popIn .5s .3s cubic-bezier(.34, 1.56, .64, 1) both;
-    }
-
-    @keyframes popIn {
-      from {
-        transform: scale(0)
-      }
-
-      to {
-        transform: scale(1)
-      }
-    }
-
-    .modal-name {
-      font-family: 'Fredoka One', cursive;
-      font-size: clamp(1.8rem, 5vw, 2.6rem);
-      color: var(--navy);
-      margin-bottom: .3rem;
-    }
-
-    .modal-year-tag {
-      display: inline-block;
-      background: linear-gradient(135deg, var(--blue), var(--navy));
-      color: var(--white);
-      font-size: .72rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: .35rem 1rem;
-      border-radius: 999px;
-      margin-bottom: 1.4rem;
-    }
-
-    .modal-divider {
-      width: 60px;
-      height: 4px;
-      background: var(--gold);
-      border-radius: 2px;
-      margin: 0 auto 1.4rem;
-    }
-
-    .modal-msg {
-      font-size: 1.1rem;
-      color: #3A4A6A;
-      line-height: 1.75;
-      max-width: 460px;
-      margin: 0 auto 1.8rem;
-    }
-
-    .modal-congrats {
-      display: inline-flex;
-      align-items: center;
-      gap: .6rem;
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color: var(--navy);
-      font-weight: 800;
-      font-size: .9rem;
-      padding: .7rem 1.8rem;
-      border-radius: 999px;
-      box-shadow: 0 4px 20px rgba(245, 195, 10, .35);
-    }
-
-    /* ══════════════════════════════════════
-   FOOTER
-══════════════════════════════════════ */
-    .footer {
-      background: var(--navy);
-      padding: 3.5rem 1.5rem 2.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .footer::before {
-      content: '2026';
-      font-family: 'Fredoka One', cursive;
-      font-size: 12rem;
-      color: rgba(255, 255, 255, .03);
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      line-height: 1;
-      pointer-events: none;
-    }
-
-    .footer-logo {
-      font-family: 'Fredoka One', cursive;
-      font-size: 1.8rem;
-      color: var(--gold);
-      margin-bottom: .4rem;
-    }
-
-    .footer-sub {
-      color: rgba(255, 255, 255, .4);
-      font-size: .82rem;
-    }
-
-    .footer-hearts {
-      margin: 1rem 0 .5rem;
-      font-size: 1.2rem;
-      letter-spacing: .5rem;
-    }
-
-    /* ══════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════ */
-    @media(max-width:560px) {
-      .hero::after {
-        left: 52px
-      }
-
-      .modal-photos {
-        grid-template-columns: 1fr
-      }
-
-      .modal-photo-frame:first-child {
-        border-radius: 28px 28px 0 0;
-        aspect-ratio: 4/3
-      }
-
-      .modal-photo-frame:last-child {
-        border-radius: 0;
-        aspect-ratio: 4/3
-      }
-
-      .modal-body {
-        padding: 1.5rem 1.4rem 2rem
-      }
-
-      .mensaje-inner {
-        padding: 2rem 1.5rem
-      }
-
-      .stats-band {
-        gap: 0
-      }
-
-      .stat:not(:last-child)::after {
-        display: none
-      }
-
-      .grid {
-        grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-        gap: 1rem
-      }
-    }
-
-    @media(prefers-reduced-motion:reduce) {
 
       *,
       *::before,
       *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
-    }
-  </style>
-</head>
 
-<body>
+      html {
+        scroll-behavior: smooth;
+      }
 
-  <canvas id="confetti-canvas"></canvas>
+      body {
+        font-family: "Nunito", sans-serif;
+        background: var(--cream);
+        color: var(--ink);
+        overflow-x: hidden;
+      }
 
-  <!-- ══════ HERO ══════ -->
-  <section class="hero" id="inicio">
+      /* ══════════════════════════════════════
+   CONFETTI
+══════════════════════════════════════ */
+      #confetti-canvas {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 999;
+      }
 
-    <!-- Decoraciones flotantes escolares -->
-    <div class="deco">📚</div>
-    <div class="deco">⭐</div>
-    <div class="deco">✏️</div>
-    <div class="deco">🎒</div>
-    <div class="deco">🖍️</div>
-    <div class="deco">📐</div>
-    <div class="deco">🔭</div>
-    <div class="deco">🌟</div>
+      /* ══════════════════════════════════════
+   HERO
+══════════════════════════════════════ */
+      .hero {
+        position: relative;
+        min-height: 100svh;
+        background: var(--navy);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem 1.5rem 5rem;
+        overflow: hidden;
+      }
 
-    <div class="hero-badge">🎓 Ceremonia de Graduación · 2026</div>
+      /* Líneas de cuaderno en el fondo */
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: repeating-linear-gradient(
+          transparent,
+          transparent 39px,
+          rgba(255, 255, 255, 0.04) 39px,
+          rgba(255, 255, 255, 0.04) 40px
+        );
+        background-size: 100% 40px;
+      }
 
-    <div class="diploma-ring">🎓</div>
+      /* Margen rojo de cuaderno */
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 88px;
+        width: 2px;
+        background: rgba(232, 54, 42, 0.35);
+      }
 
-    <p class="hero-school" id="hero-school">Nombre del Colegio</p>
+      /* Ondas en la parte inferior */
+      .hero-wave {
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 100px;
+        overflow: hidden;
+      }
 
-    <h1 class="hero-title">
-      Pequeños<br>
-      <span class="accent" id="hero-titulo-accent">Grandes Pasos</span>
-    </h1>
+      .hero-wave svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
 
-    <p class="hero-msg" id="hero-msg-text">
-      Hoy celebramos el valor de cada primero: el primer amigo,
-      la primera letra, el primer logro.
-    </p>
+      /* Elementos decorativos flotantes */
+      .deco {
+        position: absolute;
+        font-size: 2.4rem;
+        animation: floatDeco 5s ease-in-out infinite;
+        pointer-events: none;
+        user-select: none;
+        opacity: 0.75;
+      }
 
-    <a href="#galeria" class="hero-cta">
-      Ver a nuestros graduados
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <path d="M5 12h14M12 5l7 7-7 7" />
-      </svg>
-    </a>
+      .deco:nth-child(1) {
+        top: 10%;
+        left: 8%;
+        animation-delay: 0s;
+      }
 
-    <div class="hero-year">2026</div>
+      .deco:nth-child(2) {
+        top: 18%;
+        right: 9%;
+        animation-delay: 0.8s;
+        font-size: 2rem;
+      }
 
-    <div class="hero-wave">
-      <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,60 C240,100 480,0 720,50 C960,100 1200,20 1440,60 L1440,100 L0,100 Z" fill="#FFFDF5" />
-      </svg>
-    </div>
-  </section>
+      .deco:nth-child(3) {
+        top: 60%;
+        left: 5%;
+        animation-delay: 1.6s;
+        font-size: 1.8rem;
+      }
 
-  <!-- ══════ STATS ══════ -->
-  <div class="stats-band">
-    <div class="stat">
-      <span class="stat-num" id="stat-total">0</span>
-      <span class="stat-label">Graduados</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">2</span>
-      <span class="stat-label">Años de historia</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">∞</span>
-      <span class="stat-label">Sueños por cumplir</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">1°</span>
-      <span class="stat-label">Grado que viene</span>
-    </div>
-  </div>
+      .deco:nth-child(4) {
+        top: 55%;
+        right: 6%;
+        animation-delay: 0.4s;
+      }
 
-  <!-- ══════ MENSAJE ══════ -->
-  <section class="mensaje-section">
-    <div class="mensaje-inner">
-      <p class="mensaje-eyebrow">📜 Un mensaje para nuestros graduados</p>
-      <p class="mensaje-text" id="mensaje-texto">
-        Hoy no solo celebramos una graduación — celebramos el valor de cada primero.
+      .deco:nth-child(5) {
+        top: 35%;
+        left: 14%;
+        animation-delay: 2s;
+        font-size: 1.6rem;
+      }
+
+      .deco:nth-child(6) {
+        top: 78%;
+        right: 12%;
+        animation-delay: 1.2s;
+        font-size: 1.5rem;
+      }
+
+      .deco:nth-child(7) {
+        top: 28%;
+        right: 18%;
+        animation-delay: 2.4s;
+        font-size: 2rem;
+      }
+
+      .deco:nth-child(8) {
+        top: 72%;
+        left: 15%;
+        animation-delay: 0.6s;
+        font-size: 1.7rem;
+      }
+
+      @keyframes floatDeco {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-4deg);
+        }
+
+        50% {
+          transform: translateY(-14px) rotate(4deg);
+        }
+      }
+
+      /* Diploma badge */
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--gold);
+        color: var(--navy);
+        font-weight: 800;
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 0.45rem 1.3rem;
+        border-radius: 999px;
+        margin-bottom: 2.2rem;
+        box-shadow: 0 0 0 4px rgba(245, 195, 10, 0.25);
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-year {
+        font-family: "Fredoka One", cursive;
+        font-size: clamp(5rem, 14vw, 11rem);
+        line-height: 1;
+        color: transparent;
+        -webkit-text-stroke: 2px rgba(255, 255, 255, 0.12);
+        position: absolute;
+        bottom: 8%;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .hero-title {
+        font-family: "Fredoka One", cursive;
+        font-size: clamp(2.8rem, 8vw, 6rem);
+        line-height: 1.05;
+        color: var(--white);
+        position: relative;
+        z-index: 1;
+        margin-bottom: 0.6rem;
+        text-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+      }
+
+      .hero-title .accent {
+        color: var(--gold);
+        display: block;
+      }
+
+      .hero-school {
+        font-size: clamp(0.85rem, 2vw, 1rem);
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.55);
+        position: relative;
+        z-index: 1;
+        margin-bottom: 1.8rem;
+      }
+
+      .hero-msg {
+        font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+        color: rgba(255, 255, 255, 0.75);
+        max-width: 520px;
+        line-height: 1.75;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 2.6rem;
+      }
+
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: var(--gold);
+        color: var(--navy);
+        font-weight: 800;
+        font-size: 1rem;
+        padding: 0.9rem 2.4rem;
+        border-radius: 999px;
+        text-decoration: none;
+        position: relative;
+        z-index: 1;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        box-shadow: 0 6px 28px rgba(245, 195, 10, 0.45);
+      }
+
+      .hero-cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 40px rgba(245, 195, 10, 0.55);
+      }
+
+      .hero-cta svg {
+        transition: transform 0.2s;
+      }
+
+      .hero-cta:hover svg {
+        transform: translateX(3px);
+      }
+
+      /* Diploma decorativo centrado arriba */
+      .diploma-ring {
+        position: relative;
+        z-index: 1;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--gold) 0%, var(--gold2) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.8rem;
+        margin: 0 auto 1.8rem;
+        box-shadow:
+          0 0 0 8px rgba(245, 195, 10, 0.2),
+          0 0 0 16px rgba(245, 195, 10, 0.08);
+        animation: pulseRing 3s ease-in-out infinite;
+      }
+
+      @keyframes pulseRing {
+        0%,
+        100% {
+          box-shadow:
+            0 0 0 8px rgba(245, 195, 10, 0.2),
+            0 0 0 16px rgba(245, 195, 10, 0.08);
+        }
+
+        50% {
+          box-shadow:
+            0 0 0 12px rgba(245, 195, 10, 0.3),
+            0 0 0 24px rgba(245, 195, 10, 0.12);
+        }
+      }
+
+      /* ══════════════════════════════════════
+   STATS BAND
+══════════════════════════════════════ */
+      .stats-band {
+        background: var(--blue);
+        padding: 2.2rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+      }
+
+      .stat {
+        flex: 1 1 180px;
+        text-align: center;
+        padding: 1rem 1.5rem;
+        position: relative;
+      }
+
+      .stat:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 20%;
+        bottom: 20%;
+        width: 1px;
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .stat-num {
+        font-family: "Fredoka One", cursive;
+        font-size: 2.6rem;
+        color: var(--gold);
+        line-height: 1;
+        display: block;
+      }
+
+      .stat-label {
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 0.3rem;
+        display: block;
+      }
+
+      /* ══════════════════════════════════════
+   MENSAJE SECTION
+══════════════════════════════════════ */
+      .mensaje-section {
+        padding: 5rem 1.5rem 4rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mensaje-section::before {
+        content: "";
+        position: absolute;
+        top: -60px;
+        left: -60px;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(245, 195, 10, 0.06);
+      }
+
+      .mensaje-section::after {
+        content: "";
+        position: absolute;
+        bottom: -80px;
+        right: -40px;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background: rgba(26, 58, 143, 0.06);
+      }
+
+      .mensaje-inner {
+        max-width: 780px;
+        margin: 0 auto;
+        background: var(--white);
+        border-radius: 28px;
+        padding: 3rem 3.5rem;
+        box-shadow: 0 8px 60px rgba(13, 27, 64, 0.1);
+        position: relative;
+        border-top: 6px solid var(--gold);
+      }
+
+      .mensaje-inner::before {
+        content: '"';
+        font-family: "Fredoka One", cursive;
+        font-size: 8rem;
+        color: var(--gold);
+        opacity: 0.15;
+        position: absolute;
+        top: -1rem;
+        left: 1.5rem;
+        line-height: 1;
+      }
+
+      .mensaje-eyebrow {
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold2);
+        margin-bottom: 1rem;
+      }
+
+      .mensaje-text {
+        font-size: clamp(1.05rem, 2vw, 1.25rem);
+        line-height: 1.85;
+        color: #3a4a6a;
+        font-weight: 400;
+        position: relative;
+        z-index: 1;
+      }
+
+      .firma {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(13, 27, 64, 0.08);
+      }
+
+      .firma-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--blue), var(--navy));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        flex-shrink: 0;
+      }
+
+      .firma-nombre {
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--ink);
+      }
+
+      .firma-rol {
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+
+      /* ══════════════════════════════════════
+   GALERÍA
+══════════════════════════════════════ */
+      .galeria-section {
+        padding: 2rem 1.5rem 6rem;
+        background: linear-gradient(180deg, var(--cream) 0%, #eef2fb 100%);
+      }
+
+      .galeria-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: rgba(26, 58, 143, 0.1);
+        color: var(--blue);
+        font-weight: 700;
+        font-size: 0.75rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 0.4rem 1rem;
+        border-radius: 999px;
+        margin-bottom: 1rem;
+      }
+
+      .section-h2 {
+        font-family: "Fredoka One", cursive;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        color: var(--navy);
+        margin-bottom: 0.5rem;
+      }
+
+      .section-hint {
+        color: var(--muted);
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.4rem;
+      }
+
+      /* Buscador */
+      .search-wrap {
+        max-width: 440px;
+        margin: 0 auto 2.5rem;
+        position: relative;
+      }
+
+      .search-wrap svg {
+        position: absolute;
+        left: 1.1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--muted);
+        pointer-events: none;
+      }
+
+      #buscar {
+        width: 100%;
+        padding: 0.9rem 1.2rem 0.9rem 3rem;
+        border: 2px solid transparent;
+        border-radius: 999px;
+        background: var(--white);
+        box-shadow: 0 4px 20px rgba(13, 27, 64, 0.1);
+        font-family: "Nunito", sans-serif;
+        font-size: 1rem;
+        color: var(--ink);
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+        outline: none;
+      }
+
+      #buscar:focus {
+        border-color: var(--blue);
+        box-shadow: 0 0 0 4px rgba(26, 58, 143, 0.12);
+      }
+
+      #buscar::placeholder {
+        color: var(--muted);
+      }
+
+      /* Grid */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 1.5rem;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      /* ══════════════════════════════════════
+   CARDS
+══════════════════════════════════════ */
+      .card {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        cursor: pointer;
+        transition:
+          transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.3s;
+        box-shadow: 0 4px 20px rgba(13, 27, 64, 0.08);
+        position: relative;
+      }
+
+      .card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(13, 27, 64, 0.18);
+      }
+
+      /* Número de graduado */
+      .card-num {
+        position: absolute;
+        top: 0.7rem;
+        left: 0.7rem;
+        z-index: 6;
+        background: var(--navy);
+        color: var(--gold);
+        font-family: "Fredoka One", cursive;
+        font-size: 0.75rem;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Fotos */
+      .card-photo {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 3/4;
+        background: #d0daea;
+        overflow: hidden;
+      }
+
+      .card-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      img.foto-inicio {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+      }
+
+      img.foto-fin {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        clip-path: inset(0 100% 0 0);
+        transition: clip-path 0.75s cubic-bezier(0.77, 0, 0.18, 1);
+      }
+
+      .card:hover img.foto-fin,
+      .card.touched img.foto-fin {
+        clip-path: inset(0 0% 0 0);
+      }
+
+      /* Sello de graduación */
+      .card-sello {
+        position: absolute;
+        bottom: 0.7rem;
+        right: 0.7rem;
+        z-index: 5;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+        transform: scale(0) rotate(-15deg);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s;
+        pointer-events: none;
+      }
+
+      .card:hover .card-sello,
+      .card.touched .card-sello {
+        transform: scale(1) rotate(8deg);
+      }
+
+      /* Etiqueta antes/ahora */
+      .card-label {
+        position: absolute;
+        bottom: 0.75rem;
+        left: 0.75rem;
+        z-index: 5;
+        background: rgba(13, 27, 64, 0.75);
+        backdrop-filter: blur(6px);
+        color: var(--white);
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.28rem 0.7rem;
+        border-radius: 999px;
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+      }
+
+      .card:hover .card-label,
+      .card.touched .card-label {
+        opacity: 1;
+      }
+
+      /* Placeholder sin foto */
+      .card-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #d0daea, #e8eef8);
+        color: var(--muted);
+        font-size: 0.8rem;
+        gap: 0.5rem;
+        text-align: center;
+        padding: 1rem;
+      }
+
+      .card-placeholder span {
+        font-size: 2.2rem;
+        opacity: 0.5;
+      }
+
+      /* Info inferior */
+      .card-body {
+        padding: 1rem 1.1rem 1.2rem;
+        background: var(--white);
+        position: relative;
+      }
+
+      /* Línea de color por inicial */
+      .card-body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 1.1rem;
+        right: 1.1rem;
+        height: 3px;
+        background: linear-gradient(90deg, var(--gold), var(--blue));
+        border-radius: 0 0 3px 3px;
+      }
+
+      .card-name {
+        font-family: "Fredoka One", cursive;
+        font-size: 1.05rem;
+        color: var(--navy);
+        line-height: 1.2;
+        margin-bottom: 0.35rem;
+      }
+
+      .card-msg {
+        font-size: 0.76rem;
+        color: var(--muted);
+        line-height: 1.45;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      /* Sin resultados */
+      #sin-resultados {
+        grid-column: 1/-1;
+        text-align: center;
+        padding: 5rem 1rem;
+        color: var(--muted);
+        display: none;
+      }
+
+      /* ══════════════════════════════════════
+   MODAL
+══════════════════════════════════════ */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 2000;
+        background: rgba(7, 12, 26, 0.85);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+
+      .modal-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .modal {
+        background: var(--white);
+        border-radius: 28px;
+        box-shadow: 0 32px 100px rgba(0, 0, 0, 0.45);
+        max-width: 820px;
+        width: 100%;
+        max-height: 92svh;
+        overflow-y: auto;
+        transform: scale(0.9) translateY(30px);
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+      }
+
+      .modal-overlay.open .modal {
+        transform: scale(1) translateY(0);
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 10;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: rgba(13, 27, 64, 0.08);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--muted);
+        font-size: 1.1rem;
+        font-weight: 700;
+        transition:
+          background 0.2s,
+          color 0.2s,
+          transform 0.2s;
+      }
+
+      .modal-close:hover {
+        background: var(--navy);
+        color: var(--white);
+        transform: rotate(90deg);
+      }
+
+      /* Fotos del modal */
+      .modal-photos {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .modal-photo-frame {
+        position: relative;
+        aspect-ratio: 3/4;
+        overflow: hidden;
+      }
+
+      .modal-photo-frame:first-child {
+        border-radius: 28px 0 0 0;
+      }
+
+      .modal-photo-frame:last-child {
+        border-radius: 0 28px 0 0;
+      }
+
+      .modal-photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* reveal on modal open */
+      .modal-overlay.open .modal-photo-frame:last-child img {
+        animation: revealSlide 0.9s 0.2s cubic-bezier(0.77, 0, 0.18, 1) both;
+      }
+
+      @keyframes revealSlide {
+        from {
+          clip-path: inset(0 100% 0 0);
+        }
+
+        to {
+          clip-path: inset(0 0% 0 0);
+        }
+      }
+
+      .modal-photo-tag {
+        position: absolute;
+        top: 0.8rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(13, 27, 64, 0.8);
+        backdrop-filter: blur(6px);
+        color: var(--white);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.9rem;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+
+      .modal-photo-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #d0daea, #e8eef8);
+        color: var(--muted);
+        gap: 0.5rem;
+        font-size: 0.85rem;
+        text-align: center;
+        padding: 1.5rem;
+      }
+
+      /* Cuerpo del modal */
+      .modal-body {
+        padding: 2rem 2.5rem 2.5rem;
+        text-align: center;
+        position: relative;
+      }
+
+      /* Banda dorada */
+      .modal-gold-band {
+        height: 6px;
+        background: linear-gradient(
+          90deg,
+          var(--red),
+          var(--gold),
+          var(--blue),
+          var(--green),
+          var(--gold)
+        );
+        background-size: 300% 100%;
+        animation: bandScroll 4s linear infinite;
+      }
+
+      @keyframes bandScroll {
+        0% {
+          background-position: 0% 0;
+        }
+
+        100% {
+          background-position: 300% 0;
+        }
+      }
+
+      .modal-emoji {
+        font-size: 3rem;
+        display: block;
+        margin: 0.8rem auto;
+        animation: popIn 0.5s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      }
+
+      @keyframes popIn {
+        from {
+          transform: scale(0);
+        }
+
+        to {
+          transform: scale(1);
+        }
+      }
+
+      .modal-name {
+        font-family: "Fredoka One", cursive;
+        font-size: clamp(1.8rem, 5vw, 2.6rem);
+        color: var(--navy);
+        margin-bottom: 0.3rem;
+      }
+
+      .modal-year-tag {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--blue), var(--navy));
+        color: var(--white);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        padding: 0.35rem 1rem;
+        border-radius: 999px;
+        margin-bottom: 1.4rem;
+      }
+
+      .modal-divider {
+        width: 60px;
+        height: 4px;
+        background: var(--gold);
+        border-radius: 2px;
+        margin: 0 auto 1.4rem;
+      }
+
+      .modal-msg {
+        font-size: 1.1rem;
+        color: #3a4a6a;
+        line-height: 1.75;
+        max-width: 460px;
+        margin: 0 auto 1.8rem;
+      }
+
+      .modal-congrats {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        background: linear-gradient(135deg, var(--gold), var(--gold2));
+        color: var(--navy);
+        font-weight: 800;
+        font-size: 0.9rem;
+        padding: 0.7rem 1.8rem;
+        border-radius: 999px;
+        box-shadow: 0 4px 20px rgba(245, 195, 10, 0.35);
+      }
+
+      /* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
+      .footer {
+        background: var(--navy);
+        padding: 3.5rem 1.5rem 2.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer::before {
+        content: "2026";
+        font-family: "Fredoka One", cursive;
+        font-size: 12rem;
+        color: rgba(255, 255, 255, 0.03);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        line-height: 1;
+        pointer-events: none;
+      }
+
+      .footer-logo {
+        font-family: "Fredoka One", cursive;
+        font-size: 1.8rem;
+        color: var(--gold);
+        margin-bottom: 0.4rem;
+      }
+
+      .footer-sub {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.82rem;
+      }
+
+      .footer-hearts {
+        margin: 1rem 0 0.5rem;
+        font-size: 1.2rem;
+        letter-spacing: 0.5rem;
+      }
+
+      /* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+      @media (max-width: 560px) {
+        .hero::after {
+          left: 52px;
+        }
+
+        .modal-photos {
+          grid-template-columns: 1fr;
+        }
+
+        .modal-photo-frame:first-child {
+          border-radius: 28px 28px 0 0;
+          aspect-ratio: 4/3;
+        }
+
+        .modal-photo-frame:last-child {
+          border-radius: 0;
+          aspect-ratio: 4/3;
+        }
+
+        .modal-body {
+          padding: 1.5rem 1.4rem 2rem;
+        }
+
+        .mensaje-inner {
+          padding: 2rem 1.5rem;
+        }
+
+        .stats-band {
+          gap: 0;
+        }
+
+        .stat:not(:last-child)::after {
+          display: none;
+        }
+
+        .grid {
+          grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+          gap: 1rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- ══════ HERO ══════ -->
+    <section class="hero" id="inicio">
+      <!-- Decoraciones flotantes escolares -->
+      <div class="deco">📚</div>
+      <div class="deco">⭐</div>
+      <div class="deco">✏️</div>
+      <div class="deco">🎒</div>
+      <div class="deco">🖍️</div>
+      <div class="deco">📐</div>
+      <div class="deco">🔭</div>
+      <div class="deco">🌟</div>
+
+      <div class="hero-badge">🎓 Ceremonia de Graduación · 2026</div>
+
+      <div class="diploma-ring">🎓</div>
+
+      <p class="hero-school" id="hero-school">Nombre del Colegio</p>
+
+      <h1 class="hero-title">
+        Pequeños<br />
+        <span class="accent" id="hero-titulo-accent">Grandes Pasos</span>
+      </h1>
+
+      <p class="hero-msg" id="hero-msg-text">
+        Hoy celebramos el valor de cada primero: el primer amigo, la primera
+        letra, el primer logro.
       </p>
-      <div class="firma">
-        <div class="firma-avatar">🏫</div>
-        <div>
-          <p class="firma-nombre" id="firma-nombre">Nombre del Colegio</p>
-          <p class="firma-rol" id="firma-rol">Prebásica · Promoción 2026</p>
+
+      <a href="#galeria" class="hero-cta">
+        Ver a nuestros graduados
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+
+      <div class="hero-year">2026</div>
+
+      <div class="hero-wave">
+        <svg
+          viewBox="0 0 1440 100"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0,60 C240,100 480,0 720,50 C960,100 1200,20 1440,60 L1440,100 L0,100 Z"
+            fill="#FFFDF5"
+          />
+        </svg>
+      </div>
+    </section>
+
+    <!-- ══════ STATS ══════ -->
+    <div class="stats-band">
+      <div class="stat">
+        <span class="stat-num" id="stat-total">0</span>
+        <span class="stat-label">Graduados</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Años de historia</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">∞</span>
+        <span class="stat-label">Sueños por cumplir</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">1°</span>
+        <span class="stat-label">Grado que viene</span>
+      </div>
+    </div>
+
+    <!-- ══════ MENSAJE ══════ -->
+    <section class="mensaje-section">
+      <div class="mensaje-inner">
+        <p class="mensaje-eyebrow">📜 Un mensaje para nuestros graduados</p>
+        <p class="mensaje-text" id="mensaje-texto">
+          Hoy no solo celebramos una graduación — celebramos el valor de cada
+          primero.
+        </p>
+        <div class="firma">
+          <div class="firma-avatar">🏫</div>
+          <div>
+            <p class="firma-nombre" id="firma-nombre">Nombre del Colegio</p>
+            <p class="firma-rol" id="firma-rol">Prebásica · Promoción 2026</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ GALERÍA ══════ -->
+    <section class="galeria-section" id="galeria">
+      <div class="galeria-header">
+        <div class="section-tag">🌱 Prekínder → 🎓 Graduación</div>
+        <h2 class="section-h2">Así crecieron</h2>
+        <p class="section-hint">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          Pasa el cursor o toca una tarjeta para ver cómo crecieron
+        </p>
+      </div>
+
+      <div class="search-wrap">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input
+          type="text"
+          id="buscar"
+          placeholder="Buscar a un graduado…"
+          autocomplete="off"
+        />
+      </div>
+
+      <div class="grid" id="grid-graduados">
+        <div id="sin-resultados">
+          <p style="font-size: 2.5rem">🔍</p>
+          <p style="margin-top: 0.5rem">No encontramos a ese graduado.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════ MODAL ══════ -->
+    <div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
+      <div class="modal">
+        <button class="modal-close" id="modal-close" aria-label="Cerrar">
+          ✕
+        </button>
+        <div class="modal-gold-band"></div>
+        <div class="modal-photos" id="modal-photos"></div>
+        <div class="modal-body">
+          <span class="modal-emoji">🎓</span>
+          <h2 class="modal-name" id="modal-nombre"></h2>
+          <div class="modal-year-tag">Promoción Prebásica 2026</div>
+          <div class="modal-divider"></div>
+          <p class="modal-msg" id="modal-mensaje"></p>
+          <div class="modal-congrats">🎉 ¡Felicitaciones, graduado!</div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ══════ GALERÍA ══════ -->
-  <section class="galeria-section" id="galeria">
-    <div class="galeria-header">
-      <div class="section-tag">🌱 Prekínder → 🎓 Graduación</div>
-      <h2 class="section-h2">Así crecieron</h2>
-      <p class="section-hint">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-          <circle cx="12" cy="12" r="3" />
-        </svg>
-        Pasa el cursor o toca una tarjeta para ver cómo crecieron
-      </p>
-    </div>
-
-    <div class="search-wrap">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-        <circle cx="11" cy="11" r="8" />
-        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-      </svg>
-      <input type="text" id="buscar" placeholder="Buscar a un graduado…" autocomplete="off" />
-    </div>
-
-    <div class="grid" id="grid-graduados">
-      <div id="sin-resultados">
-        <p style="font-size:2.5rem">🔍</p>
-        <p style="margin-top:.5rem">No encontramos a ese graduado.</p>
+    <!-- ══════ FOOTER ══════ -->
+    <footer class="footer">
+      <div class="footer-logo" id="footer-logo">Nombre del Colegio</div>
+      <div class="footer-hearts">⭐ 🎓 ⭐</div>
+      <div class="footer-sub" id="footer-sub">
+        Graduación Prebásica · Promoción 2026
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- ══════ MODAL ══════ -->
-  <div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
-    <div class="modal">
-      <button class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
-      <div class="modal-gold-band"></div>
-      <div class="modal-photos" id="modal-photos"></div>
-      <div class="modal-body">
-        <span class="modal-emoji">🎓</span>
-        <h2 class="modal-name" id="modal-nombre"></h2>
-        <div class="modal-year-tag">Promoción Prebásica 2026</div>
-        <div class="modal-divider"></div>
-        <p class="modal-msg" id="modal-mensaje"></p>
-        <div class="modal-congrats">🎉 ¡Felicitaciones, graduado!</div>
-      </div>
-    </div>
-  </div>
+    <script src="datos.js"></script>
+    <script>
+      // ─── Poblar datos del colegio ───────────────────────────────
+      document.getElementById("hero-school").textContent =
+        MENSAJE_PRINCIPAL.colegio;
+      document.getElementById("hero-msg-text").textContent =
+        MENSAJE_PRINCIPAL.mensaje;
+      document.getElementById("mensaje-texto").textContent =
+        MENSAJE_PRINCIPAL.mensaje;
+      document.getElementById("firma-nombre").textContent =
+        MENSAJE_PRINCIPAL.colegio;
+      document.getElementById("firma-rol").textContent =
+        MENSAJE_PRINCIPAL.subtitulo;
+      document.getElementById("footer-logo").textContent =
+        MENSAJE_PRINCIPAL.colegio;
+      document.getElementById("footer-sub").textContent =
+        "Graduación Prebásica · " + MENSAJE_PRINCIPAL.subtitulo;
+      document.title =
+        "Graduación Prebásica 2026 · " + MENSAJE_PRINCIPAL.colegio;
 
-  <!-- ══════ FOOTER ══════ -->
-  <footer class="footer">
-    <div class="footer-logo" id="footer-logo">Nombre del Colegio</div>
-    <div class="footer-hearts">⭐ 🎓 ⭐</div>
-    <div class="footer-sub" id="footer-sub">Graduación Prebásica · Promoción 2026</div>
-  </footer>
+      // Stat total con contador animado
+      const statEl = document.getElementById("stat-total");
+      let count = 0;
+      const target = GRADUADOS.length;
+      const step = Math.ceil(target / 40);
+      const timer = setInterval(() => {
+        count = Math.min(count + step, target);
+        statEl.textContent = count;
+        if (count >= target) clearInterval(timer);
+      }, 35);
 
-  <script src="datos.js"></script>
-  <script>
-    // ─── Poblar datos del colegio ───────────────────────────────
-    document.getElementById('hero-school').textContent = MENSAJE_PRINCIPAL.colegio;
-    document.getElementById('hero-msg-text').textContent = MENSAJE_PRINCIPAL.mensaje;
-    document.getElementById('mensaje-texto').textContent = MENSAJE_PRINCIPAL.mensaje;
-    document.getElementById('firma-nombre').textContent = MENSAJE_PRINCIPAL.colegio;
-    document.getElementById('firma-rol').textContent = MENSAJE_PRINCIPAL.subtitulo;
-    document.getElementById('footer-logo').textContent = MENSAJE_PRINCIPAL.colegio;
-    document.getElementById('footer-sub').textContent = 'Graduación Prebásica · ' + MENSAJE_PRINCIPAL.subtitulo;
-    document.title = 'Graduación Prebásica 2026 · ' + MENSAJE_PRINCIPAL.colegio;
+      // ─── Render cards ───────────────────────────────────────────
+      function renderCards(lista) {
+        const grid = document.getElementById("grid-graduados");
+        const noRes = document.getElementById("sin-resultados");
+        grid.querySelectorAll(".card").forEach((c) => c.remove());
 
-    // Stat total con contador animado
-    const statEl = document.getElementById('stat-total');
-    let count = 0;
-    const target = GRADUADOS.length;
-    const step = Math.ceil(target / 40);
-    const timer = setInterval(() => {
-      count = Math.min(count + step, target);
-      statEl.textContent = count;
-      if (count >= target) clearInterval(timer);
-    }, 35);
+        if (!lista.length) {
+          noRes.style.display = "block";
+          return;
+        }
+        noRes.style.display = "none";
 
-    // ─── Render cards ───────────────────────────────────────────
-    function renderCards(lista) {
-      const grid = document.getElementById('grid-graduados');
-      const noRes = document.getElementById('sin-resultados');
-      grid.querySelectorAll('.card').forEach(c => c.remove());
+        lista.forEach((g, i) => {
+          const card = document.createElement("div");
+          card.className = "card";
 
-      if (!lista.length) { noRes.style.display = 'block'; return; }
-      noRes.style.display = 'none';
+          const imgInicio = g.foto_inicio
+            ? `<img class="foto-inicio" src="${g.foto_inicio}" alt="${g.nombre} al inicio" loading="lazy" onerror="this.replaceWith(makePlaceholder('📷 Foto de inicio'))"/>`
+            : makePlaceholderHTML("📷", "Foto de inicio próximamente");
 
-      lista.forEach((g, i) => {
-        const card = document.createElement('div');
-        card.className = 'card';
+          const imgFin = g.foto_fin
+            ? `<img class="foto-fin" src="${g.foto_fin}" alt="${g.nombre} en graduación" loading="lazy" onerror="this.replaceWith(makePlaceholder('🎓 Foto de graduación'))"/>`
+            : "";
 
-        const imgInicio = g.foto_inicio
-          ? `<img class="foto-inicio" src="${g.foto_inicio}" alt="${g.nombre} al inicio" loading="lazy" onerror="this.replaceWith(makePlaceholder('📷 Foto de inicio'))"/>`
-          : makePlaceholderHTML('📷', 'Foto de inicio próximamente');
-
-        const imgFin = g.foto_fin
-          ? `<img class="foto-fin" src="${g.foto_fin}" alt="${g.nombre} en graduación" loading="lazy" onerror="this.replaceWith(makePlaceholder('🎓 Foto de graduación'))"/>`
-          : '';
-
-        card.innerHTML = `
+          card.innerHTML = `
       <div class="card-photo">
         <div class="card-num">${i + 1}</div>
         ${imgInicio}
@@ -1271,157 +1340,199 @@
       </div>
       <div class="card-body">
         <p class="card-name">${g.nombre}</p>
-        <p class="card-msg">${g.mensaje || '¡Feliz graduación!'}</p>
+        <p class="card-msg">${g.mensaje || "¡Feliz graduación!"}</p>
       </div>`;
 
-        // Touch support para móvil
-        card.addEventListener('click', () => openModal(g));
-        card.addEventListener('touchstart', () => card.classList.add('touched'), { passive: true });
-        card.addEventListener('touchend', () => setTimeout(() => card.classList.remove('touched'), 800));
+          // Touch support para móvil
+          card.addEventListener("click", () => openModal(g));
+          card.addEventListener(
+            "touchstart",
+            () => card.classList.add("touched"),
+            { passive: true },
+          );
+          card.addEventListener("touchend", () =>
+            setTimeout(() => card.classList.remove("touched"), 800),
+          );
 
-        grid.insertBefore(card, noRes);
-      });
-    }
-
-    function makePlaceholderHTML(icon, text) {
-      return `<div class="card-placeholder"><span>${icon}</span>${text}</div>`;
-    }
-    function makePlaceholder(text) {
-      const d = document.createElement('div');
-      d.className = 'card-placeholder';
-      d.innerHTML = `<span>📷</span>${text}`;
-      return d;
-    }
-
-    renderCards(GRADUADOS);
-
-    // ─── Buscador ───────────────────────────────────────────────
-    document.getElementById('buscar').addEventListener('input', function () {
-      const q = this.value.toLowerCase().trim();
-      renderCards(q ? GRADUADOS.filter(g => g.nombre.toLowerCase().includes(q)) : GRADUADOS);
-    });
-
-    // ─── Confetti (siempre activo, pausable) ────────────────────
-    const confetti = (function () {
-      const canvas = document.getElementById('confetti-canvas');
-      const ctx = canvas.getContext('2d');
-      const COLORS = ['#F5C30A', '#1A3A8F', '#E8362A', '#1DB87A', '#FFFFFF', '#FF8FE7', '#A8D8EA'];
-      let W, H, particles, running = true, rafId = null;
-
-      function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
-
-      function init() {
-        resize();
-        particles = Array.from({ length: 120 }, () => ({
-          x: Math.random() * W,
-          y: Math.random() * H - H,
-          r: Math.random() * 8 + 3,
-          d: Math.random() * 2.5 + .8,
-          color: COLORS[Math.floor(Math.random() * COLORS.length)],
-          tilt: Math.random() * 12 - 6,
-          tiltSpeed: Math.random() * .12 + .04,
-          tiltAngle: 0,
-          shape: Math.random() > .4 ? 'rect' : 'circle',
-          wobble: Math.random() * Math.PI * 2
-        }));
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, W, H);
-        particles.forEach(p => {
-          ctx.beginPath();
-          ctx.fillStyle = p.color;
-          p.tiltAngle += p.tiltSpeed;
-          p.wobble += .05;
-          if (p.shape === 'rect') {
-            ctx.save();
-            ctx.translate(p.x, p.y);
-            ctx.rotate(p.tiltAngle);
-            ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 1.7);
-            ctx.restore();
-          } else {
-            ctx.arc(p.x, p.y, p.r / 2, 0, 2 * Math.PI);
-            ctx.fill();
-          }
-          p.y += p.d;
-          p.x += Math.sin(p.wobble) * .9;
-          if (p.y > H + 20) { p.y = -10; p.x = Math.random() * W; }
+          grid.insertBefore(card, noRes);
         });
       }
 
-      function loop() {
-        if (!running) return;
-        draw();
-        rafId = requestAnimationFrame(loop);
+      function makePlaceholderHTML(icon, text) {
+        return `<div class="card-placeholder"><span>${icon}</span>${text}</div>`;
+      }
+      function makePlaceholder(text) {
+        const d = document.createElement("div");
+        d.className = "card-placeholder";
+        d.innerHTML = `<span>📷</span>${text}`;
+        return d;
       }
 
-      function pause() {
-        running = false;
-        if (rafId) cancelAnimationFrame(rafId);
-        ctx.clearRect(0, 0, W, H);
-      }
+      renderCards(GRADUADOS);
 
-      function resume() {
-        if (running) return;
-        running = true;
-        loop();
-      }
+      // ─── Buscador ───────────────────────────────────────────────
+      document.getElementById("buscar").addEventListener("input", function () {
+        const q = this.value.toLowerCase().trim();
+        renderCards(
+          q
+            ? GRADUADOS.filter((g) => g.nombre.toLowerCase().includes(q))
+            : GRADUADOS,
+        );
+      });
 
-      window.addEventListener('resize', resize);
-      init();
-      loop();
+      // ─── Confetti (siempre activo, pausable) ────────────────────
+      const confetti = (function () {
+        const canvas = document.getElementById("confetti-canvas");
+        const ctx = canvas.getContext("2d");
+        const COLORS = [
+          "#F5C30A",
+          "#1A3A8F",
+          "#E8362A",
+          "#1DB87A",
+          "#FFFFFF",
+          "#FF8FE7",
+          "#A8D8EA",
+        ];
+        let W,
+          H,
+          particles,
+          running = true,
+          rafId = null;
 
-      return { pause, resume };
-    })();
-
-    // ─── Modal ──────────────────────────────────────────────────
-    const overlay = document.getElementById('modal');
-    const modalClose = document.getElementById('modal-close');
-
-    function openModal(g) {
-      document.getElementById('modal-nombre').textContent = g.nombre;
-      document.getElementById('modal-mensaje').textContent = g.mensaje || '¡Eres un pequeño campeón! Que tu futuro esté lleno de alegría y aprendizaje.';
-
-      const photos = document.getElementById('modal-photos');
-
-      const makeFrame = (src, tag) => {
-        const frame = document.createElement('div');
-        frame.className = 'modal-photo-frame';
-        if (src) {
-          const img = document.createElement('img');
-          img.src = src;
-          img.alt = g.nombre;
-          img.onerror = () => { img.replaceWith(Object.assign(document.createElement('div'), { className: 'modal-photo-placeholder', innerHTML: '<span style="font-size:2rem">📷</span><br>Foto próximamente' })); };
-          frame.appendChild(img);
-        } else {
-          frame.innerHTML = '<div class="modal-photo-placeholder"><span style="font-size:2rem">📷</span><br>Foto próximamente</div>';
+        function resize() {
+          W = canvas.width = innerWidth;
+          H = canvas.height = innerHeight;
         }
-        const label = document.createElement('div');
-        label.className = 'modal-photo-tag';
-        label.textContent = tag;
-        frame.appendChild(label);
-        return frame;
-      };
 
-      photos.innerHTML = '';
-      photos.appendChild(makeFrame(g.foto_inicio, '🌱 Prekínder'));
-      photos.appendChild(makeFrame(g.foto_fin, '🎓 Graduación'));
+        function init() {
+          resize();
+          particles = Array.from({ length: 120 }, () => ({
+            x: Math.random() * W,
+            y: Math.random() * H - H,
+            r: Math.random() * 8 + 3,
+            d: Math.random() * 2.5 + 0.8,
+            color: COLORS[Math.floor(Math.random() * COLORS.length)],
+            tilt: Math.random() * 12 - 6,
+            tiltSpeed: Math.random() * 0.12 + 0.04,
+            tiltAngle: 0,
+            shape: Math.random() > 0.4 ? "rect" : "circle",
+            wobble: Math.random() * Math.PI * 2,
+          }));
+        }
 
-      confetti.pause();               // ← pausa al abrir
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
+        function draw() {
+          ctx.clearRect(0, 0, W, H);
+          particles.forEach((p) => {
+            ctx.beginPath();
+            ctx.fillStyle = p.color;
+            p.tiltAngle += p.tiltSpeed;
+            p.wobble += 0.05;
+            if (p.shape === "rect") {
+              ctx.save();
+              ctx.translate(p.x, p.y);
+              ctx.rotate(p.tiltAngle);
+              ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 1.7);
+              ctx.restore();
+            } else {
+              ctx.arc(p.x, p.y, p.r / 2, 0, 2 * Math.PI);
+              ctx.fill();
+            }
+            p.y += p.d;
+            p.x += Math.sin(p.wobble) * 0.9;
+            if (p.y > H + 20) {
+              p.y = -10;
+              p.x = Math.random() * W;
+            }
+          });
+        }
 
-    function closeModal() {
-      overlay.classList.remove('open');
-      document.body.style.overflow = '';
-      confetti.resume();              // ← reanuda al cerrar
-    }
+        function loop() {
+          if (!running) return;
+          draw();
+          rafId = requestAnimationFrame(loop);
+        }
 
-    modalClose.addEventListener('click', closeModal);
-    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-  </script>
-</body>
+        function pause() {
+          running = false;
+          if (rafId) cancelAnimationFrame(rafId);
+          ctx.clearRect(0, 0, W, H);
+        }
 
+        function resume() {
+          if (running) return;
+          running = true;
+          loop();
+        }
+
+        window.addEventListener("resize", resize);
+        init();
+        loop();
+
+        return { pause, resume };
+      })();
+
+      // ─── Modal ──────────────────────────────────────────────────
+      const overlay = document.getElementById("modal");
+      const modalClose = document.getElementById("modal-close");
+
+      function openModal(g) {
+        document.getElementById("modal-nombre").textContent = g.nombre;
+        document.getElementById("modal-mensaje").textContent =
+          g.mensaje ||
+          "¡Eres un pequeño campeón! Que tu futuro esté lleno de alegría y aprendizaje.";
+
+        const photos = document.getElementById("modal-photos");
+
+        const makeFrame = (src, tag) => {
+          const frame = document.createElement("div");
+          frame.className = "modal-photo-frame";
+          if (src) {
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = g.nombre;
+            img.onerror = () => {
+              img.replaceWith(
+                Object.assign(document.createElement("div"), {
+                  className: "modal-photo-placeholder",
+                  innerHTML:
+                    '<span style="font-size:2rem">📷</span><br>Foto próximamente',
+                }),
+              );
+            };
+            frame.appendChild(img);
+          } else {
+            frame.innerHTML =
+              '<div class="modal-photo-placeholder"><span style="font-size:2rem">📷</span><br>Foto próximamente</div>';
+          }
+          const label = document.createElement("div");
+          label.className = "modal-photo-tag";
+          label.textContent = tag;
+          frame.appendChild(label);
+          return frame;
+        };
+
+        photos.innerHTML = "";
+        photos.appendChild(makeFrame(g.foto_inicio, "🌱 Prekínder"));
+        photos.appendChild(makeFrame(g.foto_fin, "🎓 Graduación"));
+
+        confetti.pause(); // ← pausa al abrir
+        overlay.classList.add("open");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        overlay.classList.remove("open");
+        document.body.style.overflow = "";
+        confetti.resume(); // ← reanuda al cerrar
+      }
+
+      modalClose.addEventListener("click", closeModal);
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) closeModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+    </script>
+  </body>
 </html>
